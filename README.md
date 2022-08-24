@@ -1,6 +1,8 @@
-# calculator
+# Calculator
 
-A new Flutter project.
+To get you started with Flutter, here is a calculator demo app.
+
+![](screenshot/1661350257455.jpg)
 
 ## Getting Started
 
