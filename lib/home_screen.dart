@@ -1,6 +1,7 @@
 import 'package:calculator/my_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,28 +15,56 @@ class _HomeScreenState extends State<HomeScreen> {
   double ans = 0.0, n1 = 0.0, n2 = 0.0;
   final contoller1 = TextEditingController();
   final contoller2 = TextEditingController();
+
+  void myToast() {
+    Fluttertoast.showToast(
+        msg: "Invalid number",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.deepOrange,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
+
   void _sum() {
-    setState(() {
-      ans = double.parse(contoller1.text) + double.parse(contoller2.text);
-    });
+    try {
+      setState(() {
+        ans = double.parse(contoller1.text) + double.parse(contoller2.text);
+      });
+    } catch (e) {
+      myToast();
+    }
   }
 
   void _sub() {
-    setState(() {
-      ans = double.parse(contoller1.text) - double.parse(contoller2.text);
-    });
+    try {
+      setState(() {
+        ans = double.parse(contoller1.text) - double.parse(contoller2.text);
+      });
+    } catch (e) {
+      myToast();
+    }
   }
 
   void _mult() {
-    setState(() {
-      ans = double.parse(contoller1.text) * double.parse(contoller2.text);
-    });
+    try {
+      setState(() {
+        ans = double.parse(contoller1.text) * double.parse(contoller2.text);
+      });
+    } catch (e) {
+      myToast();
+    }
   }
 
   void _divide() {
-    setState(() {
-      ans = double.parse(contoller1.text) / double.parse(contoller2.text);
-    });
+    try {
+      setState(() {
+        ans = double.parse(contoller1.text) / double.parse(contoller2.text);
+      });
+    } catch (e) {
+      myToast();
+    }
   }
 
   @override
@@ -59,9 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: TextFormField(
                     controller: contoller1,
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
+                    // inputFormatters: <TextInputFormatter>[
+                    //   FilteringTextInputFormatter.digitsOnly,
+                    // ],
                     decoration: const InputDecoration(
                         labelText: "First Number",
                         border: OutlineInputBorder()),
@@ -73,9 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: TextFormField(
                     controller: contoller2,
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
+                    // inputFormatters: <TextInputFormatter>[
+                    //   FilteringTextInputFormatter.digitsOnly
+                    // ],
                     decoration: const InputDecoration(
                         labelText: "Second Number",
                         border: OutlineInputBorder()),
