@@ -1,3 +1,4 @@
+import 'package:calculator/my_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -86,47 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    _sum();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(100, 35)),
-                  child: "+".text.xl3.make(),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    _sub();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(100, 35)),
-                  child: "-".text.xl3.make(),
-                ),
+                MyButton(buttonText: "+", action: _sum),
+                MyButton(buttonText: "-", action: _sub)
               ],
             ).py8(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    _mult();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(100, 35)),
-                  child: "*".text.xl3.make(),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    _divide();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(100, 35)),
-                  child: "/".text.xl3.make(),
-                ),
+                MyButton(buttonText: "*", action: _mult),
+                MyButton(buttonText: "/", action: _divide),
               ],
             )
           ],
